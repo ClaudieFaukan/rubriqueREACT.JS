@@ -71,14 +71,14 @@ app.post('/rubrique', function (req, res) {
 //  Update user with id
 app.put('/rubrique', function (req, res) {
   
-    let rubrique_id = req.body.categorie_id;
-    let rubrique = req.body.categorie.label;
+    let rubrique_id = req.body.categorie.details.id;
+    let rubrique = req.body.categorie.update;
   
     if (!rubrique_id || !rubrique) {
         return res.status(400).send({ error: user, message: 'Please provide rubrique and rubrique_id' });
     }
   
-    dbConn.query("UPDATE users SET user = ? WHERE id = ?", [rubrique, rubrique_id], function (error, results, fields) {
+    dbConn.query("UPDATE categories SET label = ? WHERE id = ?", [rubrique, rubrique_id], function (error, results, fields) {
         if (error) throw error;
         return res.send({ error: false, data: results, message: 'rubrique has been updated successfully.' });
     });

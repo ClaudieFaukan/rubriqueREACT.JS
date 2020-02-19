@@ -19,14 +19,12 @@ class CategorieForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input
-          type="text"
-          placeholder="entrez une catégorie"
-          value={this.state.newCategorie}
-          onChange={this.handleChange}
-        />
-        <button>ajouter à la liste</button>
+      <form class="form-inline" onSubmit={this.handleSubmit}>
+        <div class="form-group col-3">
+          <input class="form-control" type="text" placeholder="entrez une catégorie" value={this.state.newCategorie} onChange={this.handleChange}/>
+        </div>
+        <button class="btn btn-primary">ajouter à la liste</button>  
+         
       </form>
 
       
