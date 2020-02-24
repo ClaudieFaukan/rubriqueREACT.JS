@@ -59,13 +59,12 @@ class App extends React.Component {
     body:JSON.stringify({categorie})
     }).then(res => res.json())
     .then((resj)=>{ 
-      const index=categories.findIndex(categorie => categorie.id === categorie.details.id)
-      categories.splice(index,1)  
-      this.setState({categories})})
-      .then(()=>{
-        categories.push(categorie={id:categorie.details.id,label:categorie.update})
-      this.setState({categories})}
-     )
+      const id = categorie.details.id
+      let index=categories.findIndex(categorie => categorie.id === id)
+      categories[index]= {id:categorie.details.id, label:categorie.update}
+      this.setState({categories})
+      })
+     
   };
   componentDidMount(){
     fetch("http://localhost:5000/rubriques")
